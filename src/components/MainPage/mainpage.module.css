@@ -1,0 +1,11 @@
+.window {
+  position: absolute;
+  width: 800px;
+  height: 630px;
+  left: 35%;
+  top: 100px;
+  
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
