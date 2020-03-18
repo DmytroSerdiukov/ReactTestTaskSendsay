@@ -1,10 +1,41 @@
 import React from 'react';
 import mainpage from './mainpage.module.css';
 import { Field, reduxForm } from 'redux-form';
+import { Redirect } from 'react-router-dom';
 
-const MessageForm = () => {
+class MainPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sent: false
+    }
+
+    this.showMe = this.showMe.bind(this);
+  }
+
+
+  showMe(data) {
+    let { sent } = this.state;
+    console.log(data);
+    this.setState({sent: !sent});
+  }
+
+  render() {
+    return (
+      <div className = {mainpage.window}>
+        { this.state.sent ? <Redirect to="/sent" /> : 
+        <ReduxMessageForm onSubmit={this.showMe}/> }
+      </div>
+    );
+  }
+  
+}
+
+const MessageForm = (props) => {
+    const {handleSubmit} = props;
+    
     return <>
-    <form>
+      <form onSubmit = {handleSubmit}>
         <div>
           <div><label>От кого</label></div>
           <div>
@@ -30,16 +61,9 @@ const MessageForm = () => {
             <div><Field name="message" component="input" type="text"/></div>
           </div>
         </div>
+        <button>send</button>
       </form>
     </>
-}
-
-const MainPage = props => {
-  return (
-    <div className = {mainpage.window}>
-      <ReduxMessageForm />
-    </div>
-  );
 }
 
 const ReduxMessageForm = reduxForm({form: "message"})(MessageForm);
