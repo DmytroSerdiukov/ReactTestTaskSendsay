@@ -1,0 +1,35 @@
+$backgroundColor: #E5E5E5;
+$windowColor: #FFFFFF;
+$inputWidth: 370px;
+$inputHeight: 40px;
+
+body {
+  position: relative;
+  background: $backgroundColor;
+}
+
+.window {
+  width: 800px;
+  height: 630px;
+  position: absolute;
+  left: 80px;
+  top: 120px;
+  padding: 30px;
+  background: $windowColor;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.header_form h1{
+  font-family: San Francisco Pro Display;
+}
+
+.row_direction {
+  display:flex;
+  flex-direction: row;
+}
+
+.row_direction input {
+  width: $inputWidth;
+  height: $inputHeight;
+}
