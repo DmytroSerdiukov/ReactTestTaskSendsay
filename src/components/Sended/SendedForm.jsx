@@ -1,6 +1,6 @@
 import React from 'react';
 
-const  Sended = props => {
+const  SendedForm = props => {
   return (
     <div>
       <h1>Second Form</h1>
@@ -8,4 +8,4 @@ const  Sended = props => {
   );
 }
 
-export default Sended;
+export default SendedForm;

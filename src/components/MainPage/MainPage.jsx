@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import mainpage from './mainpage.module.scss';
 import { Field, reduxForm } from 'redux-form';
-import { Redirect } from 'react-router-dom';
+import SendedForm from '../Sended/SendedForm';
+import SendedMessages from '../SendedMessages/SendedMessages';
 
 const MainPage = props => {
   const [sent, setSending] = useState(false);
@@ -11,16 +12,19 @@ const MainPage = props => {
   }
 
   return (
-    <div className = {mainpage.window}>
-      { sent ? <Redirect to="/sent" /> :
-        <div>
-          <div className={mainpage.header_form}>
-            <h1>Отправлялка сообщений</h1>
-          </div>
-          <ReduxMessageForm onSubmit={showMe}/>
-        </div> 
-      }
+    <div>
+      <div className = {mainpage.window}>
+        { sent ? <SendedForm /> :
+          <div>
+            <div className={mainpage.header_form}>
+              <h1>Отправлялка сообщений</h1>
+            </div>
+            <ReduxMessageForm onSubmit={showMe}/>
+          </div> 
+        }
 
+      </div>
+      <SendedMessages />
     </div>
   );
 }
@@ -46,15 +50,15 @@ const MessageForm = props => {
       <div>
         <div>
           <div><label>Тема письма</label></div>
-          <div><Field name="header" component="input" type="text"/></div>
+          <div className={mainpage.message_header}><Field name="header" component="input" type="text"/></div>
         </div>
         
         <div>
           <div><label>Сообщение</label></div>
-          <div><Field name="message" component="textarea" type="text"/></div>
+          <div className={mainpage.row_direction}><Field  name="message" component="textarea" type="text"/></div>
         </div>
       </div>
-      <button>send</button>
+      <button className={mainpage.send_button}>send</button>
     </form>
   </>
 }
