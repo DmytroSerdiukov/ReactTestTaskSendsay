@@ -1,36 +1,36 @@
-import React, { useState } from 'react';
-import mainpage from './mainpage.module.scss';
-import { Field, reduxForm } from 'redux-form';
-import SendedForm from '../Sended/SendedForm';
-import SendedMessages from '../SendedMessages/SendedMessages';
+import React, { useState } from 'react'
+import mainpage from './mainpage.module.scss'
+import { Field, reduxForm } from 'redux-form'
+import SendedForm from '../Sended/SendedForm'
+import SendedMessages from '../SendedMessages/SendedMessages'
 
 const MainPage = props => {
-  const [sent, setSending] = useState(false);
+  const [sent, setSending] = useState(false)
+
   let showMe = data => {
-    setSending(true);
-    console.log(data);
+    setSending(true)
+    console.log(data)
   }
 
   return (
-    <div>
-      <div className = {mainpage.window}>
-        { sent ? <SendedForm /> :
-          <div>
-            <div className={mainpage.header_form}>
-              <h1>Отправлялка сообщений</h1>
-            </div>
-            <ReduxMessageForm onSubmit={showMe}/>
-          </div> 
-        }
-
-      </div>
-      <SendedMessages />
+  <div className={mainpage.main_container}>
+    <div className={mainpage.window}>
+      { sent ? <SendedForm /> :
+        <div>
+          <div className={mainpage.header_form}>
+            <h1>Отправлялка сообщений</h1>
+          </div>
+          <ReduxMessageForm onSubmit={showMe}/>
+        </div> 
+      }
     </div>
+    <SendedMessages />
+  </div>
   );
 }
 
 const MessageForm = props => {
-  const {handleSubmit} = props;
+  const {handleSubmit} = props
   return <>
     <form onSubmit = {handleSubmit}>
       <div>
@@ -58,11 +58,11 @@ const MessageForm = props => {
           <div className={mainpage.row_direction}><Field  name="message" component="textarea" type="text"/></div>
         </div>
       </div>
-      <button className={mainpage.send_button}>send</button>
+      <button className={mainpage.send_button}>Отправить</button>
     </form>
   </>
 }
 
-const ReduxMessageForm = reduxForm({form: "message"})(MessageForm);
+const ReduxMessageForm = reduxForm({form: "message"})(MessageForm)
 
-export default MainPage;
+export default MainPage

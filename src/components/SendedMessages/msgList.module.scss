@@ -1,0 +1,35 @@
+$mainTop: 800px;
+$mainLeft: 80px;
+$mainPaddingTop: 30px;
+$headerFontSize: 24px;
+$cellHeight: 25px;
+
+.main {
+    position: absolute;
+    top: $mainTop;
+    left: $mainLeft;
+    padding-top: $mainPaddingTop;
+}
+
+.header {
+    font-size: $headerFontSize;
+}
+
+.table_cells {
+    padding: 5px;
+}
+
+.table_cells :nth-child(1) {
+    width: 100px;
+    height: $cellHeight;
+}
+
+.table_cells :nth-child(2) {
+    width: 490px;
+    height: $cellHeight;
+}
+
+.table_cells :nth-child(3) {
+    width: 100px;
+    height: $cellHeight;
+}
