@@ -3,56 +3,46 @@ import msglist from './msgList.module.scss';
 
 const Table = props => {
   const columns = [
-      {
-        header: 'Date',
-      },
-      {
-        header: 'Message',
-      },
-      {
-        header: 'Status',
-      },
-    ]
+    {
+      header: 'Дата',
+    },
+    {
+      header: 'Тема',
+    },
+    {
+      header: 'Статус',
+    },
+  ]
     
   const rows = [
-      {
-        date: '30 September',
-        msg: 'Hello there',
-        st: 'Sended'
-      },
-      {
-        date: '30 September',
-        msg: 'Would you like?',
-        st: 'Processing',
-      },
-      {
-        date: '30 September',
-        msg: 'Let\'s play',
-        st: 'Failed'
-      },
-      {
-        date: '31 September',
-        msg: 'New work for you',
-        st: 'Failed'
-      },
-      {
-        date: '31 September',
-        msg: 'New game was released',
-        st: 'Sended'
-      }
+    {
+      date: '30 Сентября',
+      msg: 'Тема письма, которая не поместится в эту строку, потому ч...',
+      st: 'Отправлено'
+    },
+    {
+      date: '30 Сентября',
+      msg: 'Тема письма, которая не поместится в эту строку, потому ч...',
+      st: 'В очереди',
+    },
+    {
+      date: '30 Сентября',
+      msg: 'Тема письма, которая не поместится в эту строку, потому ч...',
+      st: 'Ошибка'
+    },
   ]
   return <div>
     <table>
-      <tr>
-        {columns.map( (el, i) => <td key={i} className={msglist.table_cells}>{el.header}</td>)}
+      <tr className={msglist.table_headers}>
+        {columns.map( (el, i) => <td className={msglist.header_columns} key={i}>{el.header}</td>)}
       </tr>
-        {rows.map((el, i) => 
-            <tr key={i}>
-                <td className={msglist.table_cells}>{el.date}</td>
-                <td className={msglist.table_cells}>{el.msg}</td>
-                <td className={msglist.table_cells}>{el.st}</td>
-            </tr>)
-        }
+      {rows.map((el, i) => 
+        <tr key={i} className={msglist.table_cells}>
+          <td>{el.date}</td>
+          <td>{el.msg}</td>
+          <td>{el.st}</td>
+        </tr>
+      )}
    </table>
   </div>  
 }

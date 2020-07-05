@@ -8,22 +8,24 @@ const MainPage = props => {
   const [sent, setSending] = useState(false)
 
   let showMe = data => {
+    //setTimeout(() => setSending(true), 2000)
     setSending(true)
     console.log(data)
   }
 
   return (
   <div className={mainpage.main_container}>
-    <div className={mainpage.window}>
-      { sent ? <SendedForm /> :
+    { sent ? <SendedForm /> :
+    <>
+      <div className={mainpage.window}>
         <div>
           <div className={mainpage.header_form}>
             <h1>Отправлялка сообщений</h1>
           </div>
           <ReduxMessageForm onSubmit={showMe}/>
         </div> 
-      }
-    </div>
+      </div>
+    </>}
     <SendedMessages />
   </div>
   );

@@ -3,6 +3,8 @@ $mainLeft: 80px;
 $mainPaddingTop: 30px;
 $headerFontSize: 24px;
 $cellHeight: 25px;
+$header_col_size: 16px;
+$header_columns_color: gray;
 
 .main {
     position: absolute;
@@ -15,21 +17,64 @@ $cellHeight: 25px;
     font-size: $headerFontSize;
 }
 
+// убрать отступы между ячейками
+.header_columns {
+    font-size: $header_col_size;
+    color: $header_columns_color;
+    border-bottom: 1px solid $header_columns_color;
+    border-collapse: collapse;
+    border-spacing: 0px 0px;
+    margin: 0px;
+}
+
+
+.table_headers :nth-child(1) {
+    padding: 10px;
+    height: $cellHeight;
+    width: 100px;
+    line-height: 25px;
+
+}
+.table_headers :nth-child(2) {
+    padding: 10px;
+    height: $cellHeight;
+    width: 500px;
+    line-height: 25px;
+
+}
+.table_headers :nth-child(3) {
+    padding: 10px;
+    height: $cellHeight;
+    width: 120px;
+    text-align: right;
+    line-height: 25px;
+
+}
+
 .table_cells {
-    padding: 5px;
+    padding: 10px;
 }
 
 .table_cells :nth-child(1) {
     width: 100px;
     height: $cellHeight;
+    text-align: left;
+    line-height: 25px;
+
 }
 
 .table_cells :nth-child(2) {
-    width: 490px;
+    width: 500px;
     height: $cellHeight;
+    text-align: justify;
+    line-height: 25px;
+
 }
 
 .table_cells :nth-child(3) {
-    width: 100px;
+    width: 120px;
     height: $cellHeight;
+    text-align: right;
+    line-height: 25px;
+
 }
