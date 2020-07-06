@@ -32,6 +32,7 @@ const Table = props => {
     },
   ]
   return <div>
+    <span className={msglist.header}>Отправленные сообщения</span>
     <table>
       <tr className={msglist.table_headers}>
         {columns.map( (el, i) => <td className={msglist.header_columns} key={i}>{el.header}</td>)}
