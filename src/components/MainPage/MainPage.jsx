@@ -3,19 +3,30 @@ import mainpage from './mainpage.module.scss'
 import { Field, reduxForm } from 'redux-form'
 import SendedForm from '../Sended/SendedForm'
 import SendedMessages from '../SendedMessages/SendedMessages'
+import { sendMessage } from '../../reducer/formHandleReducer'
+import { connect } from 'react-redux'
 
 const MainPage = props => {
   const [sent, setSending] = useState(false)
 
   let showMe = data => {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"]
+    const d = new Date()
+    const date = '' + d.getDate() + ', ' + monthNames[d.getMonth()]
+
+    const message = {
+      date: date,
+      header: data.header,
+      msg: data.message,
+      st: 'sended'
+    }
+    props.sendMessage(message)
     setSending(true)
-    console.log(data)
   }
 
   return (
-  <div 
-  className={mainpage.main_container}
-  >
+  <div className={mainpage.main_container}>
     { sent ? <SendedForm /> :
     <>
       <div 
@@ -57,7 +68,7 @@ const MessageForm = props => {
         </div>
         
         <div>
-          <div><label>Сообщение</label></div>
+          <div><label>Сообщение</label></div>  
           <div className={mainpage.row_direction}><Field  name="message" component="textarea" type="text"/></div>
         </div>
       </div>
@@ -70,4 +81,4 @@ const MessageForm = props => {
 
 const ReduxMessageForm = reduxForm({form: "message"})(MessageForm)
 
-export default MainPage
+export default connect(null, {sendMessage})(MainPage)
