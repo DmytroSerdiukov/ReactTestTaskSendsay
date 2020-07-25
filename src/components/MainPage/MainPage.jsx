@@ -6,6 +6,10 @@ import SendedForm from '../Sended/SendedForm'
 import SendedMessages from '../SendedMessages/SendedMessages'
 import mainpage from './mainpage.module.scss'
 import Button from '../Button'
+import FormElement from '../formControls/formControls'
+import { //required, 
+       // maxLengthMaker, 
+        validate } from '../validators/validators'
 
 const MainPage = props => {
   const [sent, setSending] = useState(false)
@@ -15,7 +19,7 @@ const MainPage = props => {
     "July", "August", "September", "October", "November", "December"]
     const d = new Date()
     const date = '' + d.getDate() + ', ' + monthNames[d.getMonth()]
-
+    console.log(data)
     const message = {
       date: date,
       header: data.header,
@@ -30,9 +34,7 @@ const MainPage = props => {
   <div className={mainpage.main_container}>
     { sent ? <SendedForm /> :
     <>
-      <div 
-      className={mainpage.window}
-      >
+      <div className={mainpage.window}>
         <ReduxMessageForm onSubmit={showMe}/>
       </div>
     </>}
@@ -40,6 +42,10 @@ const MainPage = props => {
   </div>
   );
 }
+
+const Input = FormElement("input")
+const TextArea = FormElement("textarea")
+//const length10 = maxLengthMaker(10)
 
 const MessageForm = props => {
   const {handleSubmit} = props
@@ -49,38 +55,76 @@ const MessageForm = props => {
     </div>
     <form onSubmit = {handleSubmit}>
       <div>
-        <div><label>От кого</label></div>
+        <div className={mainpage.labelStyles}><label>От кого</label></div>
         <div className={mainpage.row_direction}>
-          <div><Field name="yourname" placeholder="Имя" component="input" type="text"/></div>
-          <div><Field name="youremail" placeholder="Email" component="input" type="text"/></div>
+          <div><Field 
+              name="yourname" 
+              placeholder="Имя" 
+              component={Input} 
+              type="text"
+              // validate={[required, length10]}
+            />
+          </div>
+          <div><Field 
+              name="youremail" 
+              placeholder="Email" 
+              component={Input} 
+              type="text"
+              // validate={[required, length10]}
+            />
+          </div>
         </div>
       </div>
       <div>
-        <div><label>Кому</label></div>
+        <div className={mainpage.labelStyles}><label>Кому</label></div>
         <div className={mainpage.row_direction}>
-          <div><Field name="name" placeholder="Имя" component="input" type="text"/></div>
-          <div><Field name="email" placeholder="Email" component="input" type="text"/></div>
+          <div><Field 
+            name="name" 
+            placeholder="Имя" 
+            component={Input} 
+            type="text"
+            // validate={[required, length10]}
+          />
+        </div>
+          <div><Field 
+            name="email" 
+            placeholder="Email" 
+            component={Input} 
+            type="text"
+            // validate={[required, length10]}
+          />
+        </div>
         </div>
       </div>
       <div>
         <div>
-          <div><label>Тема письма</label></div>
-          <div className={mainpage.message_header}><Field name="header" component="input" type="text"/></div>
+          <div className={mainpage.labelStyles}><label>Тема письма</label></div>
+          <div className={mainpage.message_header}>
+            <Field name="header" 
+              component={Input} 
+              type="text"
+              // validate={[required, length10]}
+            />
+          </div>
         </div>
         
         <div>
-          <div><label>Сообщение</label></div>  
-          <div className={mainpage.row_direction}><Field  name="message" component="textarea" type="text"/></div>
+          <div className={mainpage.labelStyles}><label>Сообщение</label></div>  
+          <div className={mainpage.row_direction}>
+            <Field  
+              name="message" 
+              component={TextArea} 
+              type="text"
+              // validate={[required, length10]}
+            />
+          </div>
         </div>
       </div>
       <Button />
-      {/* <button 
-      className={mainpage.send_button}
-      >Отправить</button> */}
     </form>
   </>
 }
 
-const ReduxMessageForm = reduxForm({form: "message"})(MessageForm)
+const ReduxMessageForm = reduxForm({form: "message", validate})(MessageForm)
 
 export default connect(null, {sendMessage})(MainPage)

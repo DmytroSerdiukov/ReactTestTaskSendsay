@@ -14,6 +14,7 @@ $inputWidth: $length370px;
 $inputHeight: $length40px;
 $longInputWidth: $length370px;
 $messageInputWidth: $length740;
+$borderStyles: 1px solid #DDDDDD;
 
 body {
   position: relative;
@@ -43,11 +44,20 @@ label {
   font-size: $labelFontSize;
 }
 
+.labelStyles {
+  line-height: 20px;
+  font-size: $labelFontSize;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
 .message_header input{
   display:flex;
   flex-direction: row;
   width: $messageInputWidth;
   height: $inputHeight;
+  border: $borderStyles;
 }
 
 .row_direction {
@@ -58,11 +68,13 @@ label {
 .row_direction input {
   width: $inputWidth;
   height: $inputHeight;
+  border: $borderStyles;
 }
 
 .row_direction textarea {
   width: $messageInputWidth;
   height: $length140px;
+  border: $borderStyles;
 }
 
 .send_button {
