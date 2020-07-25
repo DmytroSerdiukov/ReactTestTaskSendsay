@@ -4,7 +4,7 @@ let initState = {
     messages: [],
 }
 
-const formHandleReducer = (state = initState, action) => {
+const formHandleReducer = (state = initState, action) =>  {
     switch(action.type) {
         case SEND_MESSAGE:{
             let message = {
@@ -18,7 +18,7 @@ const formHandleReducer = (state = initState, action) => {
         default:
             return state
     }
-}
+ }
 
 export default formHandleReducer
 

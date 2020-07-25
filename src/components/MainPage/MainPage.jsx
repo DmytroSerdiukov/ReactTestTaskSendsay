@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import mainpage from './mainpage.module.scss'
 import { Field, reduxForm } from 'redux-form'
-import SendedForm from '../Sended/SendedForm'
-import SendedMessages from '../SendedMessages/SendedMessages'
 import { sendMessage } from '../../reducer/formHandleReducer'
 import { connect } from 'react-redux'
+import SendedForm from '../Sended/SendedForm'
+import SendedMessages from '../SendedMessages/SendedMessages'
+import mainpage from './mainpage.module.scss'
+import Button from '../Button'
 
 const MainPage = props => {
   const [sent, setSending] = useState(false)
@@ -72,9 +73,10 @@ const MessageForm = props => {
           <div className={mainpage.row_direction}><Field  name="message" component="textarea" type="text"/></div>
         </div>
       </div>
-      <button 
+      <Button />
+      {/* <button 
       className={mainpage.send_button}
-      >Отправить</button>
+      >Отправить</button> */}
     </form>
   </>
 }
