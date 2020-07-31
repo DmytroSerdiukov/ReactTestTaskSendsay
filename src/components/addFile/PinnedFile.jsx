@@ -1,9 +1,10 @@
 import React from 'react'
+import { StyledListItem } from './styled_span'
 
 const PinnedFile = ({number}) => {
-    return <div>
-        Pinned File{number}
-    </div>
+    return <StyledListItem>
+        Pinned File {number}
+    </StyledListItem>
 }
 
 export default PinnedFile

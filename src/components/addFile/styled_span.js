@@ -7,16 +7,33 @@ const StyledSpan = styled.input`
     ${styles}
 `
 
-const StyledFileList = css`
+const StyledList = css`
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    width: 750px;
+`
+export const StyledFileList = styled.div`
+    ${StyledList}
 `
 
-export const StyledDiv = styled.div`
-    ${StyledFileList}
+export const ListItem = css`
+    width: 365px;
+    height: 50px;
+    border: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: #FFFFFF;
+    margin-top: 5px;
+    margin-right: 10px;
+
+    &:last-child {
+        margin-right: 0px;
+    }
 `
 
-
-
+export const StyledListItem = styled.div`
+    ${ListItem}
+`
 
 export default StyledSpan

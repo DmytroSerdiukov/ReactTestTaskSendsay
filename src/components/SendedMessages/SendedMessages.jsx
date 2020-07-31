@@ -21,7 +21,8 @@ const Table = props => {
   
   return <div>
     <span className={msglist.header}>Отправленные сообщения</span>
-    <table>
+    {props.messages.length > 0 ?
+      <table>
       <tr className={msglist.table_headers}>
         {columns.map( (el, i) => <td className={msglist.header_columns} key={i}>{el.header}</td>)}
       </tr>
@@ -32,7 +33,9 @@ const Table = props => {
           <td>{el.st}</td>
         </tr>
       )}
-   </table>
+   </table> : <div>Сообщения еще не отправлялись</div>  
+  }
+    
   </div>  
 }
 

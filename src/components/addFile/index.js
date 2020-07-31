@@ -1,24 +1,24 @@
 import React from 'react'
 import StyledSpan from './styled_span.js'
-import StyledFileList from './styled_span.js'
+import StyledList from './styled_span.js'
 import { connect } from 'react-redux'
 import {getPinnedFiles} from './../../reducer/selectors'
 import {addFile} from './../../reducer/formHandleReducer'
 import PinnedFile from './PinnedFile.jsx'
-import {StyledDiv} from './styled_span'
+import {StyledFileList} from './styled_span'
 const FileKeeper = props => {
 
-    const print = e => {
+    const PinFile = e => {
         e.preventDefault()
         console.log(e)
         props.addFile(e)
     }
 
     return <div>
-        <StyledDiv>{props.files.map((f, i) => <PinnedFile number={i} /> )}</StyledDiv>
+        <StyledFileList>{props.files.map((f, i) => <PinnedFile number={i} /> )}</StyledFileList>
         <label>
             Прикрепить файл
-            <input type="file" onChange={print} style={{visibility: "hidden"}}/>
+            <input type="file" onChange={PinFile} style={{visibility: "hidden"}}/>
         </label>
         
     </div>
