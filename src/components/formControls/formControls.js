@@ -1,9 +1,9 @@
 import React from 'react'
 
 export const Element = Element => ({input, meta, ...props}) => {
-  const hasError = meta.touched && meta.error
+ // const hasError = meta.touched && meta.error
   return <div>
-    <Element {...input} {...props}/>
+    <Element type='text' {...input} {...props}/>
     {renderError(meta)}
   </div>
 }

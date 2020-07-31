@@ -31,7 +31,15 @@ body {
   flex-direction: column;
 }
 
+.header_form {
+  font-size: 30px;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
 .window {
+  position: relative;
   width: $length800px;
   height: $length630px;
   padding: 30px;

@@ -1,7 +1,7 @@
 import React from 'react'
 import sended from './sended.module.scss'
-import {useEffect} from 'react'
-import { Redirect } from 'react-router-dom'
+// import {useEffect} from 'react'
+// import { Redirect } from 'react-router-dom'
 
 
 const  SendedForm = props => {

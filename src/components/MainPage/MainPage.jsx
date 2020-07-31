@@ -9,7 +9,9 @@ import Button from '../Button'
 import FormElement from '../formControls/formControls'
 import { //required, 
        // maxLengthMaker, 
-        validate } from '../validators/validators'
+        // validate\
+       emailIsValid, nameIsValid, required} from '../validators/validators'
+import FileKeeper from '../addFile'
 
 const MainPage = props => {
   const [sent, setSending] = useState(false)
@@ -48,10 +50,10 @@ const TextArea = FormElement("textarea")
 //const length10 = maxLengthMaker(10)
 
 const MessageForm = props => {
-  const {handleSubmit} = props
+  const {handleSubmit, pristine, submitting} = props
   return <>
     <div className={mainpage.header_form}>
-      <h1>Отправлялка сообщений</h1>
+      <span>Отправлялка сообщений</span>
     </div>
     <form onSubmit = {handleSubmit}>
       <div>
@@ -62,7 +64,7 @@ const MessageForm = props => {
               placeholder="Имя" 
               component={Input} 
               type="text"
-              // validate={[required, length10]}
+              validate={[required]}
             />
           </div>
           <div><Field 
@@ -70,7 +72,7 @@ const MessageForm = props => {
               placeholder="Email" 
               component={Input} 
               type="text"
-              // validate={[required, length10]}
+              validate={[required, emailIsValid]}
             />
           </div>
         </div>
@@ -83,7 +85,7 @@ const MessageForm = props => {
             placeholder="Имя" 
             component={Input} 
             type="text"
-            // validate={[required, length10]}
+            validate={[required]}
           />
         </div>
           <div><Field 
@@ -91,7 +93,7 @@ const MessageForm = props => {
             placeholder="Email" 
             component={Input} 
             type="text"
-            // validate={[required, length10]}
+            validate={[required, emailIsValid]}
           />
         </div>
         </div>
@@ -120,11 +122,13 @@ const MessageForm = props => {
           </div>
         </div>
       </div>
-      <Button />
+      <FileKeeper />
+      <Button disabled={pristine || submitting}/>
+
     </form>
   </>
 }
 
-const ReduxMessageForm = reduxForm({form: "message", validate})(MessageForm)
+const ReduxMessageForm = reduxForm({form: "message"})(MessageForm)
 
 export default connect(null, {sendMessage})(MainPage)

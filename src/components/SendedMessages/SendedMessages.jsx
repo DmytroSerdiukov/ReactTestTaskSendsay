@@ -2,7 +2,7 @@ import React from 'react';
 import msglist from './msgList.module.scss';
 import { connect } from 'react-redux';
 import { getMessages } from '../../reducer/selectors';
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
 
 const Table = props => {

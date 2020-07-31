@@ -1,7 +1,9 @@
 const SEND_MESSAGE = 'SEND_MESSAGE'
+const ADD_FILE = 'ADD_FILE'
 
 let initState = {
     messages: [],
+    pinnedFiles: []
 }
 
 const formHandleReducer = (state = initState, action) =>  {
@@ -14,7 +16,10 @@ const formHandleReducer = (state = initState, action) =>  {
             }
         return { ...state, messages: [...state.messages, message]}
         }
-        
+        case ADD_FILE: {
+            console.log('file added')
+            return {...state, pinnedFiles: [...state.pinnedFiles, action.file]}
+        }
         default:
             return state
     }
@@ -22,5 +27,5 @@ const formHandleReducer = (state = initState, action) =>  {
 
 export default formHandleReducer
 
-export const sendMessage = (message) => ({type: 'SEND_MESSAGE', msg: message})
-    
+export const sendMessage = message => ({type: 'SEND_MESSAGE', msg: message})
+export const addFile = file => ({type: 'ADD_FILE', file})
